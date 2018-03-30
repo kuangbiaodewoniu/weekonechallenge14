@@ -2,8 +2,7 @@
 # -*- coding:utf-8 _*-
 
 import re
-import urllib
-import requests
+import requests,json
 
 def ele_red_packet(number):
     s = requests.session()
@@ -36,8 +35,7 @@ def ele_red_packet(number):
             "phone": phone,
             "weixin_uid": '468015ki5tulqs9mbjmjvr6w83o45kh9'
         }
-        s3 = s.post("https://restapi.ele.me/marketing/hongbao/h5/grab",
-                    json=value, headers=headers)
+        s3 = s.post("https://restapi.ele.me/marketing/hongbao/h5/grab", data=json.dumps(value), headers=headers)
 
         s3_list.append(s3.status_code)
 
